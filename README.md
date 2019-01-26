@@ -52,3 +52,6 @@ Follow this link to setup wifi connection and learn more abou the installation p
 https://www.teachmemicro.com/raspberry-pi-zero-web-server/
 Follow this link for more detailed installation instructions.
 https://howtoraspberrypi.com/how-to-install-web-server-raspberry-pi-lamp/
+
+If you reset your raspbian image and are trying to connect to it from the same IP addres you need to reset your host key
+ssh-keygen -R [hostname|IP address]
