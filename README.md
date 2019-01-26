@@ -40,10 +40,6 @@ Use these commands to configure the raspberry PI web server.
 
 11. **sudo apt install phpmyadmin** :Install phpmyadmin web server to graphically manage your MYSQL databse.
 
-12. **sudo chown -R pi:www-data /var/www/html/** :Change the server file directory permissions.
-
-13. **sudo chmod -R 770 /var/www/html/** :Change the server file directory permissions.
-
 
 Follow this link to setup wifi connection and learn more abou the installation procedure. 
 https://www.teachmemicro.com/raspberry-pi-zero-web-server/
