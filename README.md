@@ -19,26 +19,30 @@ Use these commands to configure the raspberry PI web server.
 
 2. **sudo apt-get install apache2 -y** :Install Apache2 Debian server.
 
-3. **sudo apt install php php-mbstring** :Install PHP.
+3. **sudo chown -R pi:www-data /var/www/html/** :Change directory permissions.
 
-4. **sudo rm /var/www/html/index.html** :Delete index.html file created by the Apache install.
+4. **sudo chmod -R 770 /var/www/html/** : Change directory file permissions.
 
-5. **echo "<?php phpinfo ();?>" > /var/www/html/index.php** :Create a PHP test file in the same directory.
+5. **sudo apt install php php-mbstring** :Install PHP.
 
-6. **sudo apt install mysql-server php-mysql** :Install MYSQL database.
+6. **sudo rm /var/www/html/index.html** :Delete index.html file created by the Apache install.
 
-7. **sudo mysql --user=root** :Test to make sure MYSQL is working.
+7. **echo "<?php phpinfo ();?>" > /var/www/html/index.php** :Create a PHP test file in the same directory.
 
-8. Now you need to configure the root user on MYSQL. Type each of the bolded commands then press enter.
+8. **sudo apt install mysql-server php-mysql** :Install MYSQL database.
+
+9. **sudo mysql --user=root** :Test to make sure MYSQL is working.
+
+10. Now you need to configure the root user on MYSQL. Type each of the bolded commands then press enter.
    - **DROP USER 'root'@'localhost';**
    - **CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';**
    - **GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';**
 
-9. **sudo apt install phpmyadmin** :Install phpmyadmin web server to graphically manage your MYSQL databse.
+11. **sudo apt install phpmyadmin** :Install phpmyadmin web server to graphically manage your MYSQL databse.
 
-3. **sudo chown -R pi:www-data /var/www/html/** :Change the server file directory permissions.
+12. **sudo chown -R pi:www-data /var/www/html/** :Change the server file directory permissions.
 
-4. **sudo chmod -R 770 /var/www/html/** :Change the server file directory permissions.
+13. **sudo chmod -R 770 /var/www/html/** :Change the server file directory permissions.
 
 
 Follow this link to setup wifi connection and learn more abou the installation procedure. 
