@@ -13,6 +13,7 @@ LAMP attendance web server receives POST requests from devices and logs it into 
 
 
 ## Setup Raspberry Pi
+Use these commands to configure the raspberry PI web server.
 
 1. **sudo apt-get update** and **sudo apt-get upgrade** :Update your PI.
 
