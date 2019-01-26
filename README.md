@@ -14,7 +14,7 @@ LAMP attendance web server receives POST requests from devices and logs it into 
 
 ## Setup Raspberry Pi
 
-1. update your pi with **sudo apt-get update** and **sudo apt-get upgrade**.
+1. Update your pi with **sudo apt-get update** and **sudo apt-get upgrade**.
 
 2. Install Apache2 Debian server
-- sudo apt-get install apache2 -y
+  - sudo apt-get install apache2 -y
