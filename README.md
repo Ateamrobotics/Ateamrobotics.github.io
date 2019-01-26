@@ -29,9 +29,9 @@ LAMP attendance web server receives POST requests from devices and logs it into 
 7. **sudo mysql --user=root** :Test to make sure MYSQL is working.
 
 8. Now you need to configure the root user on MYSQL. Type each of the bolded commands then press enter.
-  - **DROP USER 'root'@'localhost';**
-  - **CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';**
-  - **GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';**
+   - **DROP USER 'root'@'localhost';**
+   - **CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';**
+   - **GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';**
 
 3. **sudo chown -R pi:www-data /var/www/html/** :Change the server file directory permissions.
 
