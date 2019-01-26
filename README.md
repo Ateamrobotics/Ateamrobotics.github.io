@@ -43,6 +43,8 @@ Use these commands to configure the raspberry PI web server.
    - **GRANT ALL PRIVILEGES ON database_name.* TO 'root'@'localhost';**
 
 13. **sudo apt install phpmyadmin** :Install phpmyadmin web server to graphically manage your MYSQL databse.
+    - When promted press the space bar when the screen shows you are hovering over apache.
+    - Then press tab and press enter.
 
 
 Follow this link to setup wifi connection and learn more abou the installation procedure. 
