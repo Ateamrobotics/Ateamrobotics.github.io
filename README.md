@@ -25,20 +25,24 @@ Use these commands to configure the raspberry PI web server.
 
 5. **sudo apt install php php-mbstring** :Install PHP.
 
-6. **sudo rm /var/www/html/index.html** :Delete index.html file created by the Apache install.
+6. **sudo apt-get install php-mbstring php7.0-mbstring php-gettext** :More PHP installation.
 
-7. **echo "<?php phpinfo ();?>" > /var/www/html/index.php** :Create a PHP test file in the same directory.
+7. **sudo service apache2 restart** :Restart Apache web service.
 
-8. **sudo apt install mysql-server php-mysql** :Install MYSQL database.
+8. **sudo rm /var/www/html/index.html** :Delete index.html file created by the Apache install.
 
-9. **sudo mysql --user=root** :Test to make sure MYSQL is working.
+9. **echo "<?php phpinfo ();?>" > /var/www/html/index.php** :Create a PHP test file in the same directory.
 
-10. Now you need to configure the root user on MYSQL. Type each of the bolded commands then press enter.
+10. **sudo apt install mysql-server php-mysql** :Install MYSQL database.
+
+11. **sudo mysql --user=root** :Test to make sure MYSQL is working.
+
+12. Now you need to configure the root user on MYSQL. Type each of the bolded commands then press enter.
    - **DROP USER 'root'@'localhost';**
    - **CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';**
    - **GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';**
 
-11. **sudo apt install phpmyadmin** :Install phpmyadmin web server to graphically manage your MYSQL databse.
+13. **sudo apt install phpmyadmin** :Install phpmyadmin web server to graphically manage your MYSQL databse.
 
 
 Follow this link to setup wifi connection and learn more abou the installation procedure. 
