@@ -33,6 +33,8 @@ LAMP attendance web server receives POST requests from devices and logs it into 
    - **CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';**
    - **GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';**
 
+9. **sudo apt install phpmyadmin** :Install phpmyadmin web server to graphically manage your MYSQL databse.
+
 3. **sudo chown -R pi:www-data /var/www/html/** :Change the server file directory permissions.
 
 4. **sudo chmod -R 770 /var/www/html/** :Change the server file directory permissions.
@@ -40,3 +42,5 @@ LAMP attendance web server receives POST requests from devices and logs it into 
 
 Follow this link to setup wifi connection and learn more abou the installation procedure. 
 https://www.teachmemicro.com/raspberry-pi-zero-web-server/
+Follow this link for more detailed installation instructions.
+https://howtoraspberrypi.com/how-to-install-web-server-raspberry-pi-lamp/
