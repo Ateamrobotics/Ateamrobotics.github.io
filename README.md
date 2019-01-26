@@ -40,7 +40,7 @@ Use these commands to configure the raspberry PI web server.
 12. Now you need to configure the root user on MYSQL. Type each of the bolded commands then press enter.
    - **DROP USER 'root'@'localhost';**
    - **CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';**
-   - **GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';**
+   - **GRANT ALL PRIVILEGES ON database_name.* TO 'root'@'localhost';**
 
 13. **sudo apt install phpmyadmin** :Install phpmyadmin web server to graphically manage your MYSQL databse.
 
