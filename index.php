@@ -59,7 +59,7 @@
 					$output .='<td>'.$row['firstName'].' '.$row['lastName'].'</td>';
 					$output .='<td>'.$row['uid'].'</td>';
 					$output .='<td>'.($numMeet-$row2['counting']).'</td>';
-					$output .='<td>'.'<a style="color:rgb(111, 21, 214)" href="viewRecord.php" class="btn" role="button">View</a>'.'</td>';
+					$output .='<td>'.'<a style="color:rgb(111, 21, 214)" href="viewRecord.php?=" class="btn" role="button">View</a>'.'</td>';
 					$output .='</tr>';
 					//Echo output
 					echo $output;

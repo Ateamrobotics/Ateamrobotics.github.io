@@ -13,8 +13,10 @@
 		$query3 ="SELECT comment FROM datesabsent ";
 		$result3 = $mysqli->query($query) or die($mysqli->error.__LINE__);
 		}else{
-			echo "Could not retrive member info";
+			$isBlank = true;
+			$screenErrorMessage =  "Could not retrive member information.";
 		}
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,8 +45,9 @@
       </div>
   </nav>
 <div>
+<h3 style="color:white; background-color:Red;"><?php echo $screenErrorMessage ?></h3>
 <h2>Days Absent</h2>
-<h3>($numMeet-$row2['counting'])</h3>
+<!-- <h3>($numMeet-$row2['counting'])</h3> -->
 </div>
 		<table class="table table-striped">
 				<tr>
@@ -54,21 +57,24 @@
 				</tr>
 				<?php 
 				//Check if at least one row is found
-				if($result->num_rows > 0) {
-				//Loop through results
-				while($row = $result->fetch_assoc()){
-					$row3 = $result->fetch_assoc()
-					//Display Present Dates
-					$output ='<tr>';
-					$output .='<td>'.$row['date'].'</td>';
-					$output .='<td>'.$row3['comment'].'</td>';
-					$output .='</tr>';
-					//Echo output
-					echo $output;
+				if($isBlank==true){
+				}else{
+					if($result->num_rows > 0) {
+						//Loop through results
+						while($row = $result->fetch_assoc()){
+							$row3 = $result->fetch_assoc();
+							//Display Present Dates
+							$output ='<tr>';
+							$output .='<td>'.$row['date'].'</td>';
+							$output .='<td>'.$row3['comment'].'</td>';
+							$output .='</tr>';
+							//Echo output
+							echo $output;
+						}
+					} else {
+						echo "Sorry, team members where not found";
+					}
 				}
-			} else {
-				echo "Sorry, team members where not found";
-			}
 			?>
 		</table>
 		<div class="footer">
