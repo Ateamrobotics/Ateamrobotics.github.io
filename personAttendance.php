@@ -1,4 +1,4 @@
-<?php include('database.php'); ?>
+<?php include('attendance/database.php'); ?>
 <?php
 	//Create the select query
 	if($_POST){

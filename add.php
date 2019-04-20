@@ -1,4 +1,4 @@
-<?php include('database.php'); ?>
+<?php include('include/database.php'); ?>
 <?php
 error_reporting(0);
 

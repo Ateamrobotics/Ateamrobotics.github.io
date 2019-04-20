@@ -1,4 +1,4 @@
-<?php include('database.php'); ?>
+<?php include('include/database.php'); ?>
 <?php
 	//Create the select query
 	$UID;
@@ -35,7 +35,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
-    <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">A-Team Attendance</a>
+    <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
