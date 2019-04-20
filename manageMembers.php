@@ -31,11 +31,10 @@ setcookie("Time_Limit","$exp");
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
-    <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;"><-back</a>
+    <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-				      <a class="btn" href="index.php"style="color:rgb(111, 21, 214);">Home<span class="sr-only"></span></a>
           </li>
         </ul>
       </div>

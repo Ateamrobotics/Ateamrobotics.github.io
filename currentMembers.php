@@ -1,4 +1,14 @@
 <?php include('include/database.php'); ?>
+<?php
+	//Create the select query
+	$query ="SELECT * FROM members ";
+	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+	//Get Number of meeting dates
+	$meetingDates ="SELECT COUNT(id) as meets FROM meeting_dates";
+	$meetingDatesResults = $mysqli->query($meetingDates) or die($mysqli->error.__LINE__);
+	$numMeetingResults = $meetingDatesResults->fetch_assoc();
+	$numMeet = $numMeetingResults['meets'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +35,39 @@
       </div>
   </nav>
   <h2>Presence Report</h2>
+  <table class="table table-striped">
+				<tr>
+					<th>Name</th>
+					<th>UID</th>
+					<th>Hours Logged</th>
+					<th>View Record</th>
+				</tr>
+			<?php 
+				//Check if at least one row is found
+				if($result->num_rows > 0) {
+				//Loop through results
+				while($row = $result->fetch_assoc()){
+					//Display customer info
+					$UID = $row['uid'];
+					$daysPresence ="SELECT COUNT(uid) as counting FROM present_record WHERE uid=$UID";
+					$daysPresenceResults = $mysqli->query($daysPresence) or die($mysqli->error.__LINE__);
+					$row2 = $daysPresenceResults->fetch_assoc();
+					//fetch_assoc($daysPresenceResults);
+ 			 
+					$output ='<tr>';
+					$output .='<td>'.$row['firstName'].' '.$row['lastName'].'</td>';
+					$output .='<td>'.$row['uid'].'</td>';
+					$output .='<td>'.($numMeet-$row2['counting']).'</td>';
+					$output .='<td>'.'<a style="color:rgb(111, 21, 214)" class="btn" role="button" href="viewRecord.php?="+"'.$row['uid'].'" >View</a>'.'</td>';
+					$output .='</tr>';
+					//Echo output
+					echo $output;
+				}
+			} else {
+				echo "Sorry, team members where not found";
+			}
+			?>
+		</table>
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
       </div>
