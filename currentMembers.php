@@ -8,6 +8,7 @@
 	$meetingDatesResults = $mysqli->query($meetingDates) or die($mysqli->error.__LINE__);
 	$numMeetingResults = $meetingDatesResults->fetch_assoc();
 	$numMeet = $numMeetingResults['meets'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,9 +39,7 @@
   <table class="table table-striped">
 				<tr>
 					<th>Name</th>
-					<th>UID</th>
-					<th>Hours Logged</th>
-					<th>View Record</th>
+          <th></th>
 				</tr>
 			<?php 
 				//Check if at least one row is found
@@ -48,17 +47,19 @@
 				//Loop through results
 				while($row = $result->fetch_assoc()){
 					//Display customer info
-					$UID = $row['uid'];
-					$daysPresence ="SELECT COUNT(uid) as counting FROM present_record WHERE uid=$UID";
-					$daysPresenceResults = $mysqli->query($daysPresence) or die($mysqli->error.__LINE__);
-					$row2 = $daysPresenceResults->fetch_assoc();
-					//fetch_assoc($daysPresenceResults);
- 			 
+					$msg = "";
+					if($row['presence']==0){
+						$msg = "Present";
+					}else{
+						$msg = "Absent";
+					}
 					$output ='<tr>';
 					$output .='<td>'.$row['firstName'].' '.$row['lastName'].'</td>';
-					$output .='<td>'.$row['uid'].'</td>';
-					$output .='<td>'.($numMeet-$row2['counting']).'</td>';
-					$output .='<td>'.'<a style="color:rgb(111, 21, 214)" class="btn" role="button" href="viewRecord.php?="+"'.$row['uid'].'" >View</a>'.'</td>';
+					if($row['presence']==0){
+						$output .='<td style="color:green;">'.$msg.'</td>';
+					}else{
+						$output .='<td style="color:red;">'.$msg.'</td>';
+					}
 					$output .='</tr>';
 					//Echo output
 					echo $output;

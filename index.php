@@ -31,6 +31,11 @@
 	<a class="nav-link" href="currentMembers.php" style="color:rgb(111, 21, 214);">Presence</a>
 </nav>
 	<h2>Attendance Report</h2>
+	<body onload="startTime()">
+
+	<div id="timeClock"></div>
+	<a class="nav-link" href="manualAdd.php" style="color:rgb(111, 21, 214);"><button class="markAttendance">Mark Attendance</button></a>
+	<h4>Metting Dates Count: <?php echo $numMeet; ?></h4>
 		<table class="table table-striped">
 				<tr>
 					<th>Name</th>
@@ -44,17 +49,16 @@
 				//Loop through results
 				while($row = $result->fetch_assoc()){
 					//Display customer info
-					$UID = $row['uid'];
-					$daysPresence ="SELECT COUNT(uid) as counting FROM present_record WHERE uid=$UID";
-					$daysPresenceResults = $mysqli->query($daysPresence) or die($mysqli->error.__LINE__);
-					$row2 = $daysPresenceResults->fetch_assoc();
-					//fetch_assoc($daysPresenceResults);
- 			 
+ 			  if(($row['hours'])>60){
+					$h=number_format((($row['hours']*100)/60),2);
+				 }else{
+					 $h=number_format($row['hours'],2);
+				 }
 					$output ='<tr>';
 					$output .='<td>'.$row['firstName'].' '.$row['lastName'].'</td>';
 					$output .='<td>'.$row['uid'].'</td>';
-					$output .='<td>'.($numMeet-$row2['counting']).'</td>';
-					$output .='<td>'.'<a style="color:rgb(111, 21, 214)" class="btn" role="button" href="viewRecord.php?="+"'.$row['uid'].'" >View</a>'.'</td>';
+					$output .='<td>'.$h.'</td>';
+					$output .='<td>'.'<a style="color:rgb(111, 21, 214)" class="btn" role="button" href="viewRecord.php?uid='.$row['uid'].'">View</a>'.'</td>';
 					$output .='</tr>';
 					//Echo output
 					echo $output;
@@ -64,9 +68,26 @@
 			}
 			?>
 		</table>
-
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
       </div>
+			<p>h.m Time Format Hours decimal Minutes</p>
 </body>
 </html>
+<script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('timeClock').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>

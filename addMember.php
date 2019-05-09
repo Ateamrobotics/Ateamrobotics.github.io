@@ -7,8 +7,10 @@ setcookie("Time_Limit","$exp");
     $firstName = ($_POST['firstName']);
     $lastName = ($_POST['lastName']);
     $uid = ($_POST['uid']);
+
+    $presence=1;
     
-    $query = "INSERT INTO members (uid, firstName, lastName, dateAdded) VALUES ('$uid','$firstName','$lastName',null)";
+    $query = "INSERT INTO members (uid, firstName, lastName, dateAdded, hours, presence) VALUES ('$uid','$firstName','$lastName','0.0','$presence')";
     $mysqli->query($query); 
     header('Location: index.php?s=0');
 		exit;
@@ -31,7 +33,7 @@ setcookie("Time_Limit","$exp");
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
-    <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
+    <a class="navbar-brand" href="manageMembers.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -39,10 +41,34 @@ setcookie("Time_Limit","$exp");
         </ul>
       </div>
   </nav>
-  <h2>Manage Members</h2>
-  
-<a href="addMember.php"><button type="button" class="btn btn-primary btn-lg" style="margin:20px;">Add Member</button></a>
-<a href="deleteMember.php"><button type="button" class="btn btn-secondary btn-lg">Delete Member</button></a>
+  <h2>Add Member</h2>
+  <style>
+  div {
+  margin: 10px;
+}
+</style>
+
+<form class="rollingForm" id="addMember" role="form" method="post" action="manageMembers.php">
+  <div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">First Name</label>
+  <div class="col-10">
+    <input class="form-control" type="text" value="" id="firstName" name="firstName">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Last Name</label>
+  <div class="col-10">
+    <input class="form-control" type="text" value="" id="lastName" name="lastName">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">UID</label>
+  <div class="col-10">
+    <input class="form-control" type="number" value="" id="uid" name="uid">
+  </div>
+</div>
+<button type="submit" class="btn btn-primary">Add</button>
+</form>
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
       </div>

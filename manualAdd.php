@@ -1,6 +1,8 @@
 <?php include('include/database.php'); 
-$exp = time()+0;
+$exp = time()+1;
 setcookie("Time_Limit","$exp");
+    $members ="SELECT * FROM members ";
+	$membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
 ?>
 <?php
   if($_POST){
@@ -39,10 +41,29 @@ setcookie("Time_Limit","$exp");
         </ul>
       </div>
   </nav>
-  <h2>Manage Members</h2>
-  
-<a href="addMember.php"><button type="button" class="btn btn-primary btn-lg" style="margin:20px;">Add Member</button></a>
-<a href="deleteMember.php"><button type="button" class="btn btn-secondary btn-lg">Delete Member</button></a>
+  <h2>Manual Add Record</h2>
+  <style>
+  div {
+  margin: 10px;
+}
+</style>
+<form id="addMember" role="form" method="get" action="add.php">
+    <div class="form-group">
+		<label style="font-size: 18px">Team Member UID</label>
+    <select class="form-control" id="memberSelect" name="uid">
+				<?php
+					if ($membersResults->num_rows > 0) {
+						while($row = $membersResults->fetch_assoc()) {
+							echo '<option value='.$row['uid'].'>'.$row['firstName'].", ".$row['lastName'].'</option>';
+						}
+					} else {
+						echo "No results.";
+					}
+				?>
+			</select>
+	</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
       </div>

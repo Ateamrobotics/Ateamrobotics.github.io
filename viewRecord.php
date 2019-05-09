@@ -1,21 +1,21 @@
 <?php include('include/database.php'); ?>
 <?php
 	//Create the select query
-	$UID;
-	if($_POST){
-		$UID = ($_POST['uid']);
-		$query ="SELECT date FROM datespresent WHERE uid='$UID'";
+	$uid;
+	$uid = $_GET['uid'];
+	if(isset($uid)&&(!empty($uid))){
+		$uid = $_GET['uid'];
+		$isBlank = false;
+		$screenErrorMessage = "";
+		$query ="SELECT `firstName`,`lastName`,`hours`,`presence` FROM `members` WHERE `uid`='$uid'";
 		$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
-
-		$query2 ="SELECT * FROM members ";
-		$result2 = $mysqli->query($query) or die($mysqli->error.__LINE__);
-
-		$query3 ="SELECT comment FROM datesabsent ";
-		$result3 = $mysqli->query($query) or die($mysqli->error.__LINE__);
-		}else{
-			$isBlank = true;
-			$screenErrorMessage =  "Could not retrive member information.";
-		}
+		$nameDisplay = $result->fetch_assoc();
+		$archive ="SELECT * FROM `archive` WHERE `uid`='$uid'";
+			$result2 = $mysqli->query($archive) or die($mysqli->error.__LINE__);
+	}else{
+		$isBlank = true;
+		$screenErrorMessage = "Could not retrive member information.";
+	}
 	
 ?>
 <!DOCTYPE html>
@@ -34,49 +34,51 @@
     <link href="./css/custom.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
-    <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php"style="background-color:rgb(111, 21, 214)">Home<span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
-  </nav>
+<nav class="navbar navbar-dark fixed-top bg-light">
+	<a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
+</nav>
 <div>
-<h3 style="color:white; background-color:Red;"><?php echo $screenErrorMessage ?></h3>
 <h2>Days Absent</h2>
-<!-- <h3>($numMeet-$row2['counting'])</h3> -->
-</div>
-		<table class="table table-striped">
+<style>
+  div {
+  margin: 5px;
+}
+</style>
+<h5 style="color:grey;">First Name: <?php echo $nameDisplay['firstName']; ?></h5>
+<h5 style="color:grey;">Last Name: <?php echo $nameDisplay['lastName']; ?></h5>
+<table class="table table-striped">
 				<tr>
 					<th>Date</th>
-					<th>Presence</th>
-					<th>Comment</th>
+					<th>Time</th>
+					<th>State</th>
 				</tr>
-				<?php 
+			<?php 
 				//Check if at least one row is found
-				if($isBlank==true){
-				}else{
-					if($result->num_rows > 0) {
-						//Loop through results
-						while($row = $result->fetch_assoc()){
-							$row3 = $result->fetch_assoc();
-							//Display Present Dates
-							$output ='<tr>';
-							$output .='<td>'.$row['date'].'</td>';
-							$output .='<td>'.$row3['comment'].'</td>';
-							$output .='</tr>';
-							//Echo output
-							echo $output;
-						}
-					} else {
-						echo "Sorry, team members where not found";
+				if($result2->num_rows > 0) {
+				//Loop through results
+				while($row = $result2->fetch_assoc()){
+					//Display specific member info
+					$msg = "";
+					if($row['state']==0){
+						$msg = "Punch In";
+					}else{
+						$msg = "Punch Out";
 					}
+					$output ='<tr>';
+					$output .='<td>'.$row['date'].'</td>';
+					$output .='<td>'.$row['time'].'</td>';
+					$output .='<td>'.$msg.'</td>';
+					$output .='</tr>';
+					//Echo output
+					echo $output;
 				}
+			} else {
+				echo "Sorry, no records were found";
+			}
 			?>
 		</table>
+<h3 style="color:white; "><?php echo $screenErrorMessage ?></h3>
+</div>
 		<div class="footer">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
       </div>
