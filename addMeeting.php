@@ -5,10 +5,12 @@ setcookie("Time_Limit","$exp");
 <?php
   if($_POST){
     $msg=0;
-    $firstName = ($_POST['firstName']);
-    $lastName = ($_POST['lastName']);
-    $uid = ($_POST['uid']);
-    $query = "INSERT INTO members (uid, firstName, lastName, dateAdded, hours, presence) VALUES ('$uid','$firstName','$lastName','','0.0','1')";
+    $title = ($_POST['title']);
+    $description = ($_POST['description']);
+    $date = ($_POST['date']);
+    $timeStart = ($_POST['timeStart']);
+    $timeEnd = ($_POST['timeEnd']);
+    $query = "INSERT INTO meeting_dates (id, title, description, date, timeStart, timeEnd) VALUES ('','$title','$description','$date','$timeStart','$timeEnd')";
     $mysqli->query($query) or $msg=1;
     header('Location: index.php?s='.$msg.'');
     exit;
@@ -46,23 +48,35 @@ setcookie("Time_Limit","$exp");
 }
 </style>
 
-<form class="rollingForm" id="addMember" role="form" method="post" action="addMember.php">
+<form class="rollingForm" id="addMeeting" role="form" method="post" action="addMeeting.php">
   <div class="form-group row">
-  <label for="example-text-input" class="col-2 col-form-label">First Name</label>
+  <label for="example-text-input" class="col-2 col-form-label">Title</label>
   <div class="col-10">
-    <input class="form-control" type="text" value="" id="firstName" name="firstName">
+    <input class="form-control" type="text" value="" id="firstName" name="title">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-text-input" class="col-2 col-form-label">Last Name</label>
+  <label for="example-text-input" class="col-2 col-form-label">Description</label>
   <div class="col-10">
-    <input class="form-control" type="text" value="" id="lastName" name="lastName">
+    <input class="form-control" type="text" value="" id="description" name="description">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-text-input" class="col-2 col-form-label">UID</label>
+  <label for="example-text-input" class="col-2 col-form-label">Date</label>
   <div class="col-10">
-    <input class="form-control" type="number" value="" id="uid" name="uid">
+    <input class="form-control" type="date" value="" id="lastName" name="date">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Start Time (h.m)</label>
+  <div class="col-10">
+    <input class="form-control" type="decimal" value="" id="startTime" name="timeStart">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">End Time (h.m)</label>
+  <div class="col-10">
+    <input class="form-control" type="decimal" value="" id="endTime" name="timeEnd">
   </div>
 </div>
 <button type="submit" class="btn btn-primary">Add</button>

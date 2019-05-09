@@ -36,10 +36,10 @@
       </div>
   </nav>
   <h2>Presence Report</h2>
-  <table class="table table-striped">
+  <table class="table-striped">
 				<tr>
-					<th>Name</th>
-          <th></th>
+					<th style="margin:20px;">Name</th>
+          <th>Present/Absent</th>
 				</tr>
 			<?php 
 				//Check if at least one row is found
@@ -54,11 +54,11 @@
 						$msg = "Absent";
 					}
 					$output ='<tr>';
-					$output .='<td>'.$row['firstName'].' '.$row['lastName'].'</td>';
+					$output .='<td style="padding-top:5px;padding-bottom:5px;">'.$row['firstName'].' '.$row['lastName'].'</td>';
 					if($row['presence']==0){
-						$output .='<td style="color:green;">'.$msg.'</td>';
+						$output .='<td style="color:green;padding-left:20px;">'.$msg.'</td>';
 					}else{
-						$output .='<td style="color:red;">'.$msg.'</td>';
+						$output .='<td style="color:red;padding-left:20px;">'.$msg.'</td>';
 					}
 					$output .='</tr>';
 					//Echo output

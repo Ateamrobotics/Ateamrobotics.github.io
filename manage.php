@@ -39,10 +39,20 @@ setcookie("Time_Limit","$exp");
         </ul>
       </div>
   </nav>
-  <h2>Manage Members</h2>
-  
+  <h2>Manage</h2>
+  <table>
+  <ul>
+  <li>
 <a href="addMember.php"><button type="button" class="btn btn-primary btn-lg" style="margin:20px;">Add Member</button></a>
-<a href="deleteMember.php"><button type="button" class="btn btn-secondary btn-lg">Delete Member</button></a>
+</li>
+<li>
+<a href="deleteMember.php"><button type="button" style="margin-left:20px;"class="btn btn-danger btn-lg">Delete Member</button></a>
+</li>
+<li>
+<a href="addMeeting.php"><button type="button" style="margin:20px;"class="btn btn-warning btn-lg">Add Meeting</button></a>
+</li>
+</ul>
+</table>
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
       </div>

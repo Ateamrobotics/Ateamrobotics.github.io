@@ -31,10 +31,10 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-light">
 	<a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
-	<a class="nav-link" href="manageMembers.php" style="color:rgb(111, 21, 214);">Manage</a>
+	<a class="nav-link" href="manage.php" style="color:rgb(111, 21, 214);">Manage</a>
 	<a class="nav-link" href="currentMembers.php" style="color:rgb(111, 21, 214);">Presence</a>
 </nav>
-	<h2>Attendance Report</h2>
+	<h2>Attendance Logs</h2>
 	<body onload="startTime()">
 	<?php 
 	if(strlen($msg) > 0){
@@ -45,14 +45,16 @@
 		}
 	}
 	?>
-
-	<div id="timeClock"></div>
+<div class="row">
+	
 	<a class="nav-link" href="manualAdd.php" style="color:rgb(111, 21, 214);"><button class="markAttendance">Mark Attendance</button></a>
-	<h4>Metting Dates Count: <?php echo $numMeet; ?></h4>
+	<p style="margin-top:18px;"id="timeClock"></p>
+	</div>
+	<h4>Mettings Count: <?php echo $numMeet; ?></h4>
 		<table class="table table-striped">
 				<tr>
 					<th>Name</th>
-					<th>UID</th>
+					<th>ID</th>
 					<th>Hours Logged</th>
 					<th>View Record</th>
 				</tr>
@@ -62,7 +64,7 @@
 				//Loop through results
 				while($row = $result->fetch_assoc()){
 					//Display customer info
- 			  if(($row['hours'])>60){
+ 			  if(($row['hours'])>0.60){
 					$h=number_format((($row['hours']*100)/60),2);
 				 }else{
 					 $h=number_format($row['hours'],2);

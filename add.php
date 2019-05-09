@@ -13,6 +13,7 @@
     $finalDate = date("Y/m/d");
     date_default_timezone_set("America/Toronto");
     $time = date("H.i");
+    $time = abs($time);
     
     //Get How Many Records are in here with the specific uid
 	$presence ="SELECT COUNT($uid) AS presence FROM present_record WHERE date='$finalDate' && uid='$uid'";

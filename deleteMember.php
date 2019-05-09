@@ -1,9 +1,10 @@
 <?php include('include/database.php');
-$members ="SELECT * FROM members ";
+$members ="SELECT * FROM members ORDER by firstName";
 $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
 ?>
 <?php
   if($_POST){
+    $msg = 0;
     $uid=$_POST['uid'];
 
     $check ="SELECT * FROM members where uid='$uid'";
@@ -16,11 +17,13 @@ $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
     echo "<script>alert(‘some message ’.”.$var.”)</script>";
 
     $query = "DELETE FROM members where uid='$uid'";
-    $mysqli->query($query); 
+    $mysqli->query($query) or $msg=1; 
     $query = "DELETE FROM present_record where uid='$uid'";
-    $mysqli->query($query); 
+    $mysqli->query($query) or $msg=1; 
+    $query = "DELETE FROM archive where uid='$uid'";
+    $mysqli->query($query) or $msg=1; 
 
-    header('Location: index.php');
+    header('Location: index.php?s='.$msg.'');
 		exit;
   }
 ?>
@@ -41,7 +44,7 @@ $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
-    <a class="navbar-brand" href="manageMembers.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
+    <a class="navbar-brand" href="manage.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -49,7 +52,7 @@ $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
         </ul>
       </div>
   </nav>
-  <h2>Add Member</h2>
+  <h2>Delete Member</h2>
   <style>
   div {
   margin: 10px;

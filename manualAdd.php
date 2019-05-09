@@ -1,7 +1,7 @@
 <?php include('include/database.php'); 
 $exp = time()+1;
 setcookie("Time_Limit","$exp");
-    $members ="SELECT * FROM members ";
+    $members ="SELECT * FROM members ORDER by firstName";
 	$membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
 ?>
 <?php
@@ -31,6 +31,7 @@ setcookie("Time_Limit","$exp");
     <!-- Custom styles for this template -->
     <link href="./css/custom.css" rel="stylesheet">
 </head>
+<body onload="startTime()">
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
     <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
@@ -47,6 +48,7 @@ setcookie("Time_Limit","$exp");
   margin: 10px;
 }
 </style>
+<p style="margin-top:18px;"id="timeClock"></p>
 <form id="addMember" role="form" method="get" action="add.php">
     <div class="form-group">
 		<label style="font-size: 18px">Team Member UID</label>
@@ -69,3 +71,20 @@ setcookie("Time_Limit","$exp");
       </div>
 </body>
 </html>
+<script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('timeClock').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
