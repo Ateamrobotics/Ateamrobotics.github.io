@@ -1,13 +1,17 @@
 <?php include('include/database.php'); ?>
 <?php
 	//Create the select query
-	$query ="SELECT * FROM members ";
+	$query ="SELECT * FROM members ORDER by firstName";
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 	//Get Number of meeting dates
 	$meetingDates ="SELECT COUNT(id) as meets FROM meeting_dates";
 	$meetingDatesResults = $mysqli->query($meetingDates) or die($mysqli->error.__LINE__);
 	$numMeetingResults = $meetingDatesResults->fetch_assoc();
 	$numMeet = $numMeetingResults['meets'];
+	$msg="";
+	if($_GET){
+		$msg = ($_GET['s']);
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,6 +36,15 @@
 </nav>
 	<h2>Attendance Report</h2>
 	<body onload="startTime()">
+	<?php 
+	if(strlen($msg) > 0){
+		if($msg == 0){
+			echo '<h4 style="color:green;">'."Success".'</h4>';
+		}else{
+			echo '<h4 style="color:red;">'."Failed".'</h4>';
+		}
+	}
+	?>
 
 	<div id="timeClock"></div>
 	<a class="nav-link" href="manualAdd.php" style="color:rgb(111, 21, 214);"><button class="markAttendance">Mark Attendance</button></a>

@@ -4,16 +4,14 @@ setcookie("Time_Limit","$exp");
 ?>
 <?php
   if($_POST){
+    $msg=0;
     $firstName = ($_POST['firstName']);
     $lastName = ($_POST['lastName']);
     $uid = ($_POST['uid']);
-
-    $presence=1;
-    
-    $query = "INSERT INTO members (uid, firstName, lastName, dateAdded, hours, presence) VALUES ('$uid','$firstName','$lastName','0.0','$presence')";
-    $mysqli->query($query); 
-    header('Location: index.php?s=0');
-		exit;
+    $query = "INSERT INTO members (uid, firstName, lastName, dateAdded, hours, presence) VALUES ('$uid','$firstName','$lastName','','0.0','1')";
+    $mysqli->query($query) or $msg=1;
+    header('Location: index.php?s='.$msg.'');
+    exit;
   }
 ?>
 <!DOCTYPE html>
