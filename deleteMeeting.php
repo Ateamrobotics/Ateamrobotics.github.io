@@ -1,26 +1,13 @@
 <?php include('include/database.php');
-$members ="SELECT * FROM members ORDER by firstName";
-$membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
+$meetings ="SELECT * FROM meeting_dates ORDER by date";
+$meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
 ?>
 <?php
   if($_POST){
     $msg = 0;
-    $uid=$_POST['uid'];
+    $id=($_POST['id']);
 
-    $check ="SELECT * FROM members where uid='$uid'";
-    $membersResults = $mysqli->query($check) or die($mysqli->error.__LINE__);
-    $results=$membersResults->fetch_assoc();
-
-    $var=$results['firstName'];
-    $var .=", ";
-    $var .= $results['lastName'];
-    echo "<script>alert(‘some message ’.”.$var.”)</script>";
-
-    $query = "DELETE FROM members where uid='$uid'";
-    $mysqli->query($query) or $msg=1; 
-    $query = "DELETE FROM present_record where uid='$uid'";
-    $mysqli->query($query) or $msg=1; 
-    $query = "DELETE FROM archive where uid='$uid'";
+    $query = "DELETE FROM meeting_dates WHERE id='$id'";
     $mysqli->query($query) or $msg=1; 
 
     header('Location: index.php?s='.$msg.'');
@@ -52,20 +39,20 @@ $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
         </ul>
       </div>
   </nav>
-  <h2>Delete Member</h2>
+  <h2>Delete Meeting</h2>
   <style>
   div {
   margin: 10px;
 }
 </style>
-<form id="deleteMember" role="form" method="post" action="deleteMember.php">
+<form id="deleteMeeting" role="form" method="post" action="deleteMeeting.php">
     <div class="form-group">
-		<label style="font-size: 18px">Team Member UID</label>
-    <select class="form-control" id="memberSelect" name="uid">
+		<label style="font-size: 18px">Team Meeting</label>
+    <select class="form-control" id="meetingID" name="id">
 				<?php
-					if ($membersResults->num_rows > 0) {
-						while($row = $membersResults->fetch_assoc()) {
-							echo '<option value='.$row['uid'].'>'.$row['firstName'].", ".$row['lastName'].'</option>';
+					if ($meetingsResults->num_rows > 0) {
+						while($row = $meetingsResults->fetch_assoc()) {
+							echo '<option value='.$row['id'].'>'.$row['title'].", ".$row['date'].'</option>';
 						}
 					} else {
 						echo "No results.";
@@ -80,8 +67,8 @@ $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
       </div>
 </body>
 </html>
-<script>
+<!-- <script>
 function myFunction() {
-      document.getElementById("deleteMember").submit();
+      document.getElementById("deleteMeeting").submit();
 }
-</script>
+</script> -->

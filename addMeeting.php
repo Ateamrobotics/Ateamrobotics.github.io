@@ -48,11 +48,11 @@ setcookie("Time_Limit","$exp");
 }
 </style>
 
-<form class="rollingForm" id="addMeeting" role="form" method="post" action="addMeeting.php">
+<form class="rollingForm" id="addMeeting" role="form" method="post" onsubmit="return validateForm()" action="addMeeting.php">
   <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Title</label>
   <div class="col-10">
-    <input class="form-control" type="text" value="" id="firstName" name="title">
+    <input class="form-control" type="text" value="" id="title" name="title">
   </div>
 </div>
 <div class="form-group row">
@@ -64,19 +64,19 @@ setcookie("Time_Limit","$exp");
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Date</label>
   <div class="col-10">
-    <input class="form-control" type="date" value="" id="lastName" name="date">
+    <input class="form-control" type="date" value="" id="date" name="date">
   </div>
 </div>
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Start Time (h.m)</label>
   <div class="col-10">
-    <input class="form-control" type="decimal" value="" id="startTime" name="timeStart">
+    <input class="form-control" type="time" value="" id="timeStart" name="timeStart">
   </div>
 </div>
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">End Time (h.m)</label>
   <div class="col-10">
-    <input class="form-control" type="decimal" value="" id="endTime" name="timeEnd">
+    <input class="form-control" type="time" value="" id="timeEnd" name="timeEnd">
   </div>
 </div>
 <button type="submit" class="btn btn-primary">Add</button>
@@ -86,3 +86,19 @@ setcookie("Time_Limit","$exp");
       </div>
 </body>
 </html>
+<script>
+    function myFunction() {
+      document.getElementById("addMeeting").submit();
+    }
+    function validateForm() {
+  var title = document.forms["addMeeting"]["title"].value;
+  var description = document.forms["addMeeting"]["description"].value;
+  var date = document.forms["addMeeting"]["date"].value;
+  var start = document.forms["addMeeting"]["timeStart"].value;
+  var end = document.forms["addMeeting"]["timeEnd"].value;
+  if (title == "" || description == "" || date == "" || start == "" || end ="") {
+    alert("Please Fill Out The Blank Fields");
+    return false;
+  }
+}
+    </script>

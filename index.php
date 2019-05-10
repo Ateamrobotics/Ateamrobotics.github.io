@@ -54,8 +54,8 @@
 		<table class="table table-striped">
 				<tr>
 					<th>Name</th>
-					<th>ID</th>
-					<th>Hours Logged</th>
+					<!-- <th>ID</th> -->
+					<th style="padding-left:40px;">Hours Logged</th>
 					<th>View Record</th>
 				</tr>
 			<?php 
@@ -71,8 +71,8 @@
 				 }
 					$output ='<tr>';
 					$output .='<td>'.$row['firstName'].' '.$row['lastName'].'</td>';
-					$output .='<td>'.$row['uid'].'</td>';
-					$output .='<td>'.$h.'</td>';
+					// $output .='<td>'.$row['uid'].'</td>';
+					$output .='<td style="padding-left:40px;">'.$h.'</td>';
 					$output .='<td>'.'<a style="color:rgb(111, 21, 214)" class="btn" role="button" href="viewRecord.php?uid='.$row['uid'].'">View</a>'.'</td>';
 					$output .='</tr>';
 					//Echo output
