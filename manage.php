@@ -1,6 +1,10 @@
 <?php include('include/database.php'); 
 ?>
 <?php
+$msg="";
+	if($_GET){
+		$msg = ($_GET['s']);
+	}
   if($_POST){
     $firstName = ($_POST['firstName']);
     $lastName = ($_POST['lastName']);
@@ -38,6 +42,15 @@
       </div>
   </nav>
   <h2>Manage</h2>
+  <?php 
+	if(strlen($msg) > 0){
+		if($msg == 0){
+			echo '<h4 style="color:green;">'."Success".'</h4>';
+		}else{
+			echo '<h4 style="color:red;">'."Failed".'</h4>';
+		}
+	}
+	?>
   <table>
   <ul style="list-style: none;">
   <li>

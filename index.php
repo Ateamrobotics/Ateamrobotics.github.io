@@ -1,8 +1,7 @@
 <?php include('include/database.php'); 
-$exp = time()+1;
-    $members ="SELECT * FROM members ORDER by firstName";
+    $members ="SELECT * FROM members ORDER by lastName";
   $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
-  $query ="SELECT * FROM members ";
+  $query ="SELECT * FROM members ORDER by firstName";
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 ?>
 <?php
@@ -47,13 +46,16 @@ $exp = time()+1;
       <li class="nav-item">
       <a class="nav-link" href="view.php" style="color:rgb(111, 21, 214);">View Logs</a>
       </li>
+      <li class="nav-item">
+      <a class="nav-link" href="viewMeetings.php" style="color:rgb(111, 21, 214);">View Meetings</a>
+      </li>
       <li>
       <a class="nav-link" href="login.php" style="color:rgb(111, 21, 214);">Login</a>
       </li>
       </ul>
   </div>
 </nav>
-  <h2>Presence and Report</h2>
+  <h2>Presence / Report</h2>
   <style>
   div {
   margin: 10px;
@@ -61,10 +63,10 @@ $exp = time()+1;
 </style>
 <p style="margin-top:18px;"id="timeClock"></p>
 <form id="addAttendace" role="form" method="get" action="add.php">
-<table class="table-striped" style="width: 100%">
+<table class="table-striped" style="width: 100%; border: 1px black solid;">
 				<tr>
 					<th style="margin:20px;">Name</th>
-          <th>Mark / Presence</th>
+          <th>Report - Presence</th>
 				</tr>
 			<?php 
 				//Check if at least one row is found

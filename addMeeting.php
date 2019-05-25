@@ -7,10 +7,11 @@ setcookie("Time_Limit","$exp");
     $msg=0;
     $title = ($_POST['title']);
     $description = ($_POST['description']);
+    $link = ($_POST['link']);
     $date = ($_POST['date']);
     $timeStart = ($_POST['timeStart']);
     $timeEnd = ($_POST['timeEnd']);
-    $query = "INSERT INTO meeting_dates (id, title, description, date, timeStart, timeEnd) VALUES ('','$title','$description','$date','$timeStart','$timeEnd')";
+    $query = "INSERT INTO meeting_dates (id, title, description, date, timeStart, timeEnd, link) VALUES ('','$title','$description','$date','$timeStart','$timeEnd', '$link')";
     $mysqli->query($query) or $msg=1;
     header('Location: index.php?s='.$msg.'');
     exit;
@@ -41,7 +42,7 @@ setcookie("Time_Limit","$exp");
         </ul>
       </div>
   </nav>
-  <h2>Add Member</h2>
+  <h2>Add Meeting</h2>
   <style>
   div {
   margin: 10px;
@@ -59,6 +60,12 @@ setcookie("Time_Limit","$exp");
   <label for="example-text-input" class="col-2 col-form-label">Description</label>
   <div class="col-10">
     <input class="form-control" type="text" value="" id="description" name="description" required>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Link</label>
+  <div class="col-10">
+    <input class="form-control" type="url" value="" id="link" name="link" required>
   </div>
 </div>
 <div class="form-group row">
@@ -93,10 +100,11 @@ setcookie("Time_Limit","$exp");
     function validateForm() {
   var title = document.forms["addMeeting"]["title"].value;
   var description = document.forms["addMeeting"]["description"].value;
+  var link = document.forms["addMeeting"]["link"].value;
   var date = document.forms["addMeeting"]["date"].value;
   var start = document.forms["addMeeting"]["timeStart"].value;
   var end = document.forms["addMeeting"]["timeEnd"].value;
-  if (title == "" || description == "" || date == "" || start == "" || end ="") {
+  if (title == "" || description == "" || date == "" || start == "" || end ="" || link ="") {
     alert("Please Fill Out The Blank Fields");
     return false;
   }

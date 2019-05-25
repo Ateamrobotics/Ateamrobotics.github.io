@@ -1,4 +1,29 @@
-<?php include('include/database.php'); 
+<?php include('include/database.php');
+ $meetings ="SELECT * FROM meeting_dates ORDER by date DESC";
+ $meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
+ $submit = false;
+ if($_POST){
+  if(isset($_POST['go'])){
+    $title = ($_POST['title']);
+    $description = ($_POST['description']);
+    $date = ($_POST['date']);
+    $timeStart = ($_POST['timeStart']);
+    $timeEnd = ($_POST['timeEnd']);
+    $link = ($_POST['link']);
+    $id = ($_POST['id']);
+    $meeting ="UPDATE meeting_dates SET title='$title', description='$description', timeStart='$timeStart', timeEnd='$timeEnd', date='$date', link='$link' WHERE id=$id";
+    $meetingResults = $mysqli->query($meeting) or die($mysqli->error.__LINE__);
+    header('Location: manage.php?s=0');
+    exit;
+   }else{
+     $id = ($_POST['id']);
+     $meeting ="SELECT * FROM meeting_dates WHERE id=$id";
+     $meetingResults = $mysqli->query($meeting) or die($mysqli->error.__LINE__);
+     $display = $meetingResults->fetch_assoc();
+     $submit = true;
+   }
+}else{
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +43,7 @@
 <body onload="startTime()">
 <body>
 	<nav class="navbar navbar-dark fixed-top bg-light">
-    <a class="navbar-brand" href="manage.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
+  <a class="navbar-brand" href="manage.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
 	<a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
   </nav>
   <h2>Edit Meeting</h2>
@@ -28,6 +53,71 @@
 }
 </style>
 <p style="margin-top:18px;margin-left:15px;"id="timeClock"></p>
+
+<form method="post" action="editMeeting.php">
+  <?php
+  if($submit==true){
+   $output= '
+  <form class="rollingForm" id="addMember" role="form" method="post" onsubmit="return validateForm()" action="addMember.php">
+  <div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Title</label>
+  <div class="col-10">
+    <input class="form-control" type="text" value='.$display['title'].'  name="title" required>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Description</label>
+  <div class="col-10">
+    <input class="form-control" type="text" name="description" value='.$display['description'].' id="description" required>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Link</label>
+  <div class="col-10">
+    <input class="form-control" type="url" value='.$display['link'].'  id="link" name="link" required>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Date</label>
+  <div class="col-10">
+    <input class="form-control" type="date" value='.$display['date'].' id="date" name="date">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Start Time (h.m)</label>
+  <div class="col-10">
+    <input class="form-control" type="time" value='.$display['timeStart'].' id="timeStart" name="timeStart" required>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">End Time (h.m)</label>
+  <div class="col-10">
+    <input class="form-control" type="time" value='.$display['timeEnd'].'  id="timeEnd" name="timeEnd" required>
+  </div>
+</div>
+<div class="form-check">
+<input type="checkbox" class="form-check-input" name="go" value="go" id="confirmEdit" required>
+<label class="form-check-label" for="confirmDelete">Confirm Edit Metting</label>
+</div>
+<button type="submit" name="id" value='.$display['id'].' class="btn btn-primary">Submit</button>
+</form>
+  ';
+  echo $output;
+  }else if($submit==false){
+    $output =  '<select class="form-control" name="id" style="margin-bottom: 10px;">';
+              if ($meetingsResults->num_rows > 0) {
+                while($row = $meetingsResults->fetch_assoc()) {
+                  $output .= '<option value='.$row['id'].'>'.$row['title'].", ".$row['date'].'</option>';
+                }
+              } else {
+                echo "No results.";
+              }
+    $output .= '</select>';
+   $output .= '<button type="submit" class="btn btn-primary">Edit This Meeting</button>';
+   echo $output;
+  }
+  ?>
+</form>
 </div>
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
@@ -51,3 +141,17 @@ function checkTime(i) {
   return i;
 }
 </script>
+<script>
+    function myFunction() {
+      document.getElementById("addMember").submit();
+    }
+    function validateForm() {
+  var firstName = document.forms["addMember"]["firstName"].value;
+  var lastName = document.forms["addMember"]["lastName"].value;
+  var uid = document.forms["addMember"]["uid"].value;
+  if (firstName == "" || lastName == "" || uid == "") {
+    alert("Please Fill Out The Blank Fields");
+    return false;
+  }
+}
+    </script>

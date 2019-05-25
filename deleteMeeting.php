@@ -10,7 +10,7 @@ $meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
     $query = "DELETE FROM meeting_dates WHERE id='$id'";
     $mysqli->query($query) or $msg=1; 
 
-    header('Location: index.php?s='.$msg.'');
+    header('Location: manage.php?s='.$msg.'');
 		exit;
   }
 ?>

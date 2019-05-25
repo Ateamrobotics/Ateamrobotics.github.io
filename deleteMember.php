@@ -23,7 +23,7 @@ $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
     $query = "DELETE FROM archive where uid='$uid'";
     $mysqli->query($query) or $msg=1; 
 
-    header('Location: index.php?s='.$msg.'');
+    header('Location: manage.php?s='.$msg.'');
 		exit;
   }
 ?>
