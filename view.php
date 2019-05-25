@@ -45,7 +45,7 @@
 	}
 	?>
 <div class="row">
-	<p style="margin-top:18px;"id="timeClock"></p>
+	<p style="margin-top:18px;margin-left: 15px;"id="timeClock"></p>
 	</div>
 	<h4>Mettings Count: <?php echo $numMeet; ?></h4>
 		<table class="table table-striped">

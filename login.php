@@ -17,14 +17,8 @@
 </head>
 <body onload="startTime()">
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
+	<nav class="navbar navbar-dark fixed-top bg-light">
     <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-          </li>
-        </ul>
-      </div>
   </nav>
   <h2>Login</h2>
   <style>
@@ -32,7 +26,20 @@
   margin: 10px;
 }
 </style>
-<p style="margin-top:18px;"id="timeClock"></p>
+<p style="margin-top:18px;margin-left:15px;"id="timeClock"></p>
+<div class="card" style="width: 90%; padding: 10px;">
+<form method="post" action="login.php">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" id="userName" aria-describedby="usernameHelp" placeholder="Enter username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
       </div>

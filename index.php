@@ -34,18 +34,25 @@ $exp = time()+1;
 </head>
 <body onload="startTime()">
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
-    <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
-    <a class="nav-link" href="manage.php" style="color:rgb(111, 21, 214);">Manage</a>
-	  <a class="nav-link" href="view.php" style="color:rgb(111, 21, 214);">View Logs</a>
-    <a class="nav-link" href="login.php" style="color:rgb(111, 21, 214);">Login</a>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-          </li>
-        </ul>
-      </div>
-  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+  <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+      <a class="nav-link" href="manage.php" style="color:rgb(111, 21, 214);">Manage</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="view.php" style="color:rgb(111, 21, 214);">View Logs</a>
+      </li>
+      <li>
+      <a class="nav-link" href="login.php" style="color:rgb(111, 21, 214);">Login</a>
+      </li>
+      </ul>
+  </div>
+</nav>
   <h2>Presence and Report</h2>
   <style>
   div {
@@ -115,3 +122,5 @@ function checkTime(i) {
   return i;
 }
 </script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
