@@ -55,7 +55,7 @@
 <form method="post" action="editMember.php">
   <?php
   if($submit==true){
-   $output= '
+   $output= '<div class="card" style="width: 90%; padding: 10px;">
   <form class="rollingForm" id="addMember" role="form" method="post" onsubmit="return validateForm()" action="addMember.php">
   <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">First Name</label>
@@ -79,8 +79,9 @@
 <input type="checkbox" class="form-check-input" id="confirmDelete" required>
 <label class="form-check-label" for="confirmDelete">Confirm Edit Member</label>
 </div>
-<button type="submit" name="oldUID" value='.$row['uid'].' class="btn btn-primary">Submit</button>
+<button type="submit" name="oldUID" value='.$row['uid'].' class="btn btn-primary" style="width:50%;">Submit</button>
 </form>
+</div>
   ';
   echo $output;
   }else if($submit==false){

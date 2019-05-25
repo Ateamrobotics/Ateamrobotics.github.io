@@ -1,6 +1,4 @@
 <?php include('include/database.php'); 
-$exp = time()+0;
-setcookie("Time_Limit","$exp");
 ?>
 <?php
   if($_POST){

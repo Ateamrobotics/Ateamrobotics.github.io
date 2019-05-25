@@ -41,13 +41,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-      <a class="nav-link" href="manage.php" style="color:rgb(111, 21, 214);">Manage</a>
+      <a class="nav-link" href="view.php" style="color:rgb(111, 21, 214);">Logs</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="view.php" style="color:rgb(111, 21, 214);">View Logs</a>
-      </li>
-      <li class="nav-item">
-      <a class="nav-link" href="viewMeetings.php" style="color:rgb(111, 21, 214);">View Meetings</a>
+      <a class="nav-link" href="viewMeetings.php" style="color:rgb(111, 21, 214);">Meetings</a>
       </li>
       <li>
       <a class="nav-link" href="login.php" style="color:rgb(111, 21, 214);">Login</a>
@@ -65,7 +62,7 @@
 <form id="addAttendace" role="form" method="get" action="add.php">
 <table class="table-striped" style="width: 100%; border: 1px black solid;">
 				<tr>
-					<th style="margin:20px;">Name</th>
+					<th style="margin:20px; padding: 10px;">Name</th>
           <th>Report - Presence</th>
 				</tr>
 			<?php 
@@ -81,7 +78,7 @@
 						$msg = "Absent";
 					}
 					$output ='<tr>';
-					$output .='<td style="padding-top:15px;padding-bottom:15px;">'.$row['firstName'].' '.$row['lastName'].'</td>';
+					$output .='<td style="padding-top:15px;padding-bottom:15px; padding-left:5px;">'.$row['firstName'].' '.$row['lastName'].'</td>';
 					// if($row['presence']==0){
 					// 	$output .='<td style="color:green;padding-left:20px;">'.$msg.'</td>';
 					// }else{

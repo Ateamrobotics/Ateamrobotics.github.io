@@ -57,7 +57,7 @@
 <form method="post" action="editMeeting.php">
   <?php
   if($submit==true){
-   $output= '
+   $output= '<div class="card" style="width: 90%; padding: 10px;">
   <form class="rollingForm" id="addMember" role="form" method="post" onsubmit="return validateForm()" action="addMember.php">
   <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Title</label>
@@ -101,6 +101,7 @@
 </div>
 <button type="submit" name="id" value='.$display['id'].' class="btn btn-primary">Submit</button>
 </form>
+</div>
   ';
   echo $output;
   }else if($submit==false){

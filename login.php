@@ -1,4 +1,10 @@
-<?php include('include/database.php'); 
+<?php 
+include('include/database.php'); 
+include('functions/user.func.php'); 
+if(logged_in()){
+  header('Location: manage.php?s=0');
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,4 +1,22 @@
-<?php include('include/database.php'); 
+<?php
+ include('include/database.php'); 
+ include('functions/user.func.php');
+?>
+<?php
+if(isset($_POST['username'])){
+  $firstName = ($_POST['firstName']);
+  $lastName = ($_POST['lastName']);
+  $username = ($_POST['username']);
+  $password = ($_POST['password']);
+  $workSpacePassword = ($_POST['workSpacePassword']);
+  if(user_exists($username)==true){
+    echo '<h3>Sorry that username already exists, try with a different username</h3>';
+  }else if($workSpacePassword!='ad6544!2019'){
+    echo '<h3>Invalid Workspace Password</h3>';
+  }else{
+    user_register($firstName, $lastName, $username, $password);
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,26 +46,26 @@
 </style>
 <p style="margin-top:18px;margin-left:15px;"id="timeClock"></p>
 <div class="card" style="width: 90%; padding: 10px;">
-<form method="post" action="login.php">
+<form method="post" action="createAccount.php">
 <div class="form-group">
     <label for="exampleInputEmail1">First Name</label>
-    <input type="text" class="form-control" id="firstName" aria-describedby="firstName" placeholder="Enter First Name" required>
+    <input type="text" class="form-control" id="firstName" aria-describedby="firstName" name="firstName" maxlength="255" placeholder="Enter First Name" required>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Last Name</label>
-    <input type="text" class="form-control" id="lastName" aria-describedby="lastName" placeholder="Enter First Name" required>
+    <input type="text" class="form-control" id="lastName" aria-describedby="lastName" name="lastName" maxlength="255" placeholder="Enter First Name" required>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
-    <input type="text" class="form-control" id="userName" aria-describedby="usernameHelp" placeholder="Enter username" required>
+    <input type="text" class="form-control" id="userName" aria-describedby="usernameHelp" name="username" maxlength="500" placeholder="Enter username" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="userPassword" placeholder="Password" required>
+    <input type="password" class="form-control" id="userPassword" name="password" maxlength="20" placeholder="Password" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Work Space Password</label>
-    <input type="password" class="form-control" id="workSpacePassword" placeholder=" Workspace Password" required>
+    <input type="password" class="form-control" id="workSpacePassword" maxlength="20" name="workSpacePassword" placeholder=" Workspace Password" required>
   </div>
   <button type="submit" class="btn btn-primary">Create</button>
 </form>
