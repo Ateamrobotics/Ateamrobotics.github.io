@@ -10,7 +10,7 @@
 		$query ="SELECT `firstName`,`lastName`,`hours`,`presence` FROM `members` WHERE `uid`='$uid'";
 		$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 		$nameDisplay = $result->fetch_assoc();
-		$archive ="SELECT * FROM `archive` WHERE `uid`='$uid'";
+		$archive ="SELECT * FROM `archive` WHERE `uid`='$uid'  ORDER by date DESC";
 			$result2 = $mysqli->query($archive) or die($mysqli->error.__LINE__);
 	}else{
 		$isBlank = true;
@@ -35,6 +35,7 @@
 </head>
 <body>
 <nav class="navbar navbar-dark fixed-top bg-light">
+<a class="navbar-brand" href="view.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
 	<a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
 </nav>
 <div>

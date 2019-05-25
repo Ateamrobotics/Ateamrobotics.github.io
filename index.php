@@ -37,7 +37,8 @@ $exp = time()+1;
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
     <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
     <a class="nav-link" href="manage.php" style="color:rgb(111, 21, 214);">Manage</a>
-	<a class="nav-link" href="view.php" style="color:rgb(111, 21, 214);">View Logs</a>
+	  <a class="nav-link" href="view.php" style="color:rgb(111, 21, 214);">View Logs</a>
+    <a class="nav-link" href="login.php" style="color:rgb(111, 21, 214);">Login</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -53,7 +54,7 @@ $exp = time()+1;
 </style>
 <p style="margin-top:18px;"id="timeClock"></p>
 <form id="addAttendace" role="form" method="get" action="add.php">
-<table class="table-striped">
+<table class="table-striped" style="width: 100%">
 				<tr>
 					<th style="margin:20px;">Name</th>
           <th>Mark / Presence</th>
@@ -71,7 +72,7 @@ $exp = time()+1;
 						$msg = "Absent";
 					}
 					$output ='<tr>';
-					$output .='<td style="padding-top:5px;padding-bottom:5px;">'.$row['firstName'].' '.$row['lastName'].'</td>';
+					$output .='<td style="padding-top:15px;padding-bottom:15px;">'.$row['firstName'].' '.$row['lastName'].'</td>';
 					// if($row['presence']==0){
 					// 	$output .='<td style="color:green;padding-left:20px;">'.$msg.'</td>';
 					// }else{
@@ -80,7 +81,7 @@ $exp = time()+1;
           if($row['presence']==0){
             $output .='<td style="color:green;padding-left:20px;"><button type="submit" class="btn btn-success" name="uid" value='.$row['uid'].'>'.$msg.'</button>'.'</td>';
 					}else{
-						$output .='<td style="color:red;padding-left:20px;"><button type="submit" class="btn btn-danger-outline" name="uid" value='.$row['uid'].' style="color:red;">'.$msg.'</button>'.'</td>';
+						$output .='<td style="color:red;padding-left:20px;"><button type="submit" class="btn btn-outline-danger" name="uid" value='.$row['uid'].' style="color:red;">'.$msg.'</button>'.'</td>';
           }
 					$output .='</tr>';
 					//Echo output

@@ -1,6 +1,4 @@
 <?php include('include/database.php'); 
-$exp = time()+0;
-setcookie("Time_Limit","$exp");
 ?>
 <?php
   if($_POST){
@@ -41,7 +39,7 @@ setcookie("Time_Limit","$exp");
   </nav>
   <h2>Manage</h2>
   <table>
-  <ul>
+  <ul style="list-style: none;">
   <li>
 <a href="addMember.html"><button type="button" class="btn btn-primary btn-lg" style="margin:20px;">Add Member</button></a>
 </li>
@@ -53,6 +51,12 @@ setcookie("Time_Limit","$exp");
 </li>
 <li>
 <a href="deleteMeeting.php"><button type="button" style="margin-left:20px;"class="btn btn-outline-danger btn-lg">Delete Meeting</button></a>
+</li>
+<li>
+<a href="editRecord.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Record</button></a>
+</li>
+<li>
+<a href="editMeeting.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Meeting</button></a>
 </li>
 </ul>
 </table>
