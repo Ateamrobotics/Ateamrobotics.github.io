@@ -52,31 +52,31 @@ setcookie("Time_Limit","$exp");
   <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Title</label>
   <div class="col-10">
-    <input class="form-control" type="text" value="" id="title" name="title">
+    <input class="form-control" type="text" value="" id="title" name="title" required>
   </div>
 </div>
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Description</label>
   <div class="col-10">
-    <input class="form-control" type="text" value="" id="description" name="description">
+    <input class="form-control" type="text" value="" id="description" name="description" required>
   </div>
 </div>
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Date</label>
   <div class="col-10">
-    <input class="form-control" type="date" value="" id="date" name="date">
+    <input class="form-control" type="date" value="" id="date" name="date" required>
   </div>
 </div>
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Start Time (h.m)</label>
   <div class="col-10">
-    <input class="form-control" type="time" value="" id="timeStart" name="timeStart">
+    <input class="form-control" type="time" value="" id="timeStart" name="timeStart" required>
   </div>
 </div>
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">End Time (h.m)</label>
   <div class="col-10">
-    <input class="form-control" type="time" value="" id="timeEnd" name="timeEnd">
+    <input class="form-control" type="time" value="" id="timeEnd" name="timeEnd" required>
   </div>
 </div>
 <button type="submit" class="btn btn-primary">Add</button>

@@ -41,16 +41,16 @@
   <table>
   <ul style="list-style: none;">
   <li>
-<a href="addMember.html"><button type="button" class="btn btn-primary btn-lg" style="margin:20px;">Add Member</button></a>
+<a href="addMember.html"><button type="button" style="margin-left:20px;margin-top:20px;" class="btn btn-primary btn-lg" >Add Member</button></a>
 </li>
 <li>
-<a href="deleteMember.php"><button type="button" style="margin-left:20px;"class="btn btn-outline-danger btn-lg">Delete Member</button></a>
+<a href="addMeeting.php"><button type="button" style="margin-left:20px;margin-top:20px;" class="btn btn-primary btn-lg">Add Meeting</button></a>
 </li>
 <li>
-<a href="addMeeting.php"><button type="button" style="margin:20px;"class="btn btn-primary btn-lg">Add Meeting</button></a>
+<a href="deleteMember.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-danger btn-lg">Delete Member</button></a>
 </li>
 <li>
-<a href="deleteMeeting.php"><button type="button" style="margin-left:20px;"class="btn btn-outline-danger btn-lg">Delete Meeting</button></a>
+<a href="deleteMeeting.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-danger btn-lg">Delete Meeting</button></a>
 </li>
 <li>
 <a href="editRecord.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Record</button></a>

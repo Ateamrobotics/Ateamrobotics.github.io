@@ -59,7 +59,11 @@ $meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
 					}
 				?>
 			</select>
-	</div>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="confirmDelete" required>
+    <label class="form-check-label" for="confirmDelete">Confirm Delete Meeting</label>
+  </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 		<div class="footer"style="margin-top:20px;">
@@ -67,8 +71,4 @@ $meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
       </div>
 </body>
 </html>
-<!-- <script>
-function myFunction() {
-      document.getElementById("deleteMeeting").submit();
-}
-</script> -->
+

@@ -7,15 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="Attendance Application" content="">
     <meta name="Adam Tronchin" content="">
-		<!-- Chrome, Firefox OS and Opera --><?php include('include/database.php'); 
-?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>A-Team Robotics</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="Attendance Application" content="">
-    <meta name="Adam Tronchin" content="">
 		<!-- Chrome, Firefox OS and Opera -->
 		<meta name="theme-color" content="#6610f2">
     <link rel="icon" href="logoSpace.png">
@@ -29,7 +20,7 @@
 	<nav class="navbar navbar-dark fixed-top bg-light">
     <a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
   </nav>
-  <h2>Login</h2>
+  <h2>Create Account</h2>
   <style>
   div {
   margin: 10px;
@@ -38,17 +29,28 @@
 <p style="margin-top:18px;margin-left:15px;"id="timeClock"></p>
 <div class="card" style="width: 90%; padding: 10px;">
 <form method="post" action="login.php">
+<div class="form-group">
+    <label for="exampleInputEmail1">First Name</label>
+    <input type="text" class="form-control" id="firstName" aria-describedby="firstName" placeholder="Enter First Name" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Last Name</label>
+    <input type="text" class="form-control" id="lastName" aria-describedby="lastName" placeholder="Enter First Name" required>
+  </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
     <input type="text" class="form-control" id="userName" aria-describedby="usernameHelp" placeholder="Enter username" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+    <input type="password" class="form-control" id="userPassword" placeholder="Password" required>
   </div>
-  <button type="submit" style="margin-left:10px;" class="btn btn-primary">Submit</button>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Work Space Password</label>
+    <input type="password" class="form-control" id="workSpacePassword" placeholder=" Workspace Password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Create</button>
 </form>
-<a class="navbar" href="createAccount.php" style="color:rgb(111, 21, 214); font-weight: bold;">Create Account</a>
 </div>
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>

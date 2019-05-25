@@ -72,7 +72,11 @@ $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
 					}
 				?>
 			</select>
-	</div>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="confirmDelete" required>
+    <label class="form-check-label" for="confirmDelete">Confirm Delete Member</label>
+  </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 		<div class="footer"style="margin-top:20px;">
