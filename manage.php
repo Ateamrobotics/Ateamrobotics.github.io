@@ -73,13 +73,13 @@ $msg="";
 <a href="deleteMeeting.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-danger btn-lg">Delete Meeting</button></a>
 </li>
 <li>
-<a href="editRecord.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Record</button></a>
+<a href="selectMember.php?choice=0"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Record</button></a>
 </li>
 <li>
 <a href="editMeeting.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Meeting</button></a>
 </li>
 <li>
-<a href="selectMember.php?choice=0"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Member</button></a>
+<a href="editMember.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Member</button></a>
 </li>
 </ul>
 </table>
