@@ -1,6 +1,10 @@
 <?php
  include('include/database.php'); 
  include('functions/user.func.php');
+ if(logged_in()){
+  header('Location: manage.php?s=0');
+  exit;
+}
 ?>
 <?php
 if(isset($_POST['username'])){

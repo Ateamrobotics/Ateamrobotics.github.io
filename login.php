@@ -5,6 +5,18 @@ if(logged_in()){
   header('Location: manage.php?s=0');
   exit;
 }
+if(isset($_POST['username'])){
+  $username = ($_POST['username']);
+  $password = ($_POST['password']);
+  $login = login_check($username, $password);
+  if($login==true){
+    $_SESSION['user_id'] = $username;
+    header('Location: manage.php?s=0');
+    exit;
+  }else{
+    echo '<h3>Username or Password is incorrect</h3>';
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,11 +58,11 @@ if(logged_in()){
 <form method="post" action="login.php">
   <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
-    <input type="text" class="form-control" id="userName" aria-describedby="usernameHelp" placeholder="Enter username" required>
+    <input type="text" class="form-control" id="userName" name="username" aria-describedby="usernameHelp" placeholder="Enter username" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password" required>
   </div>
   <button type="submit" style="margin-left:10px;" class="btn btn-primary">Submit</button>
 </form>
