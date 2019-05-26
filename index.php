@@ -1,5 +1,6 @@
 <?php include('include/database.php'); 
 include('functions/user.func.php');
+include('init.php');
     $members ="SELECT * FROM members ORDER by lastName";
   $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
   $query ="SELECT * FROM members ORDER by firstName";
@@ -48,7 +49,7 @@ include('functions/user.func.php');
       <a class="nav-link" href="viewMeetings.php" style="color:rgb(111, 21, 214);">Meetings</a>
       </li>
       <?php
-      if(logged_in()==true){
+      if(logged_in()){
         echo '
         <li class="nav-item">
         <a class="nav-link" href="manage.php" style="color:rgb(111, 21, 214);">Manage</a>

@@ -1,6 +1,7 @@
 <?php 
 include('include/database.php'); 
 include('functions/user.func.php'); 
+include('init.php');
 if(logged_in()){
   header('Location: manage.php?s=0');
   exit;
@@ -10,6 +11,7 @@ if(isset($_POST['username'])){
   $password = ($_POST['password']);
   $login = login_check($username, $password);
   if($login==true){
+    session_start();
     $_SESSION['user_id'] = $username;
     header('Location: manage.php?s=0');
     exit;

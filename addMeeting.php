@@ -48,7 +48,7 @@ setcookie("Time_Limit","$exp");
   margin: 10px;
 }
 </style>
-<div class="card" style="width: 90%; padding: 10px;">
+<!-- <div class="card" style="width: 90%; padding: 10px;"> -->
 <form class="rollingForm" id="addMeeting" role="form" method="post" onsubmit="return validateForm()" action="addMeeting.php">
   <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Title</label>
@@ -88,7 +88,7 @@ setcookie("Time_Limit","$exp");
 </div>
 <button type="submit" class="btn btn-primary">Add</button>
 </form>
-</div>
+<!-- </div> -->
 		<div class="footer"style="margin-top:20px;">
 			<p style="color:purple;">&copy; A-Team Robotics 2019</p>
       </div>
