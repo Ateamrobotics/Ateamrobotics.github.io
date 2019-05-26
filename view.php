@@ -76,7 +76,7 @@
 					echo $output;
 				}
 			} else {
-				echo "Sorry, team members where not found";
+				echo "Sorry, no records found";
 			}
 			?>
 		</table>

@@ -55,24 +55,24 @@
 <form method="post" action="editMember.php">
   <?php
   if($submit==true){
-   $output= '<div class="card" style="width: 90%; padding: 10px;">
+   $output= '
   <form class="rollingForm" id="addMember" role="form" method="post" onsubmit="return validateForm()" action="addMember.php">
   <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">First Name</label>
   <div class="col-10">
-    <input class="form-control" type="text" value="" placeholder='.$row['firstName'].' id="firstName" name="firstName" required>
+    <input class="form-control" type="text" value='.$row['firstName'].' id="firstName" name="firstName" required>
   </div>
 </div>
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">Last Name</label>
   <div class="col-10">
-    <input class="form-control" type="text" value="" id="lastName" placeholder='.$row['lastName'].' name="lastName" required>
+    <input class="form-control" type="text" value='.$row['lastName'].' id="lastName"  name="lastName" required>
   </div>
 </div>
 <div class="form-group row">
   <label for="example-text-input" class="col-2 col-form-label">UID</label>
   <div class="col-10">
-    <input class="form-control" type="number" value="" id="uid" placeholder='.$row['uid'].' name="uid">
+    <input class="form-control" type="number" value='.$row['uid'].' id="uid"  name="uid">
   </div>
 </div>
 <div class="form-check">
@@ -81,7 +81,7 @@
 </div>
 <button type="submit" name="oldUID" value='.$row['uid'].' class="btn btn-primary" style="width:50%;">Submit</button>
 </form>
-</div>
+
   ';
   echo $output;
   }else if($submit==false){

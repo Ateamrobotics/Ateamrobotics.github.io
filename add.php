@@ -72,7 +72,7 @@
             $update = "UPDATE `members` SET presence='$p' WHERE uid='$uid'";
                 $mysqli->query($update);
             echo 0;
-            header('Location: index.php');
+            header('Location: lessonsLearned.php?uid='.$uid.'&'.'date='.$finalDate.'&'.'time='.$time.'');
             exit;          
         }else{
             $query = "INSERT INTO present_record (id, uid, date, time, state) VALUES (null,'$uid','$finalDate','$time','0')";

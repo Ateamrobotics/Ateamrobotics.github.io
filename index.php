@@ -48,6 +48,9 @@ include('init.php');
       <li class="nav-item">
       <a class="nav-link" href="viewMeetings.php" style="color:rgb(111, 21, 214);">Meetings</a>
       </li>
+      <li class="nav-item">
+      <a class="nav-link" href="selectMember.php" style="color:rgb(111, 21, 214);">Member Notes</a>
+      </li>
       <?php
       if(logged_in()){
         echo '
@@ -111,7 +114,7 @@ include('init.php');
 					echo $output;
 				}
 			} else {
-				echo "Sorry, team members where not found";
+				echo "Sorry, no records found";
 			}
 			?>
 		</table>

@@ -1,8 +1,14 @@
 <?php include('include/database.php');
+include('functions/user.func.php');
+include('init.php');
 $members ="SELECT * FROM members ORDER by firstName";
 $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
 ?>
 <?php
+if(logged_in()==false){
+  header('Location: index.php');
+  exit;
+}
   if($_POST){
     $msg = 0;
     $uid=$_POST['uid'];

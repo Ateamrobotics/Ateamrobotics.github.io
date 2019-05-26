@@ -1,4 +1,12 @@
 <?php include('include/database.php'); 
+include('functions/user.func.php');
+include('init.php');
+?>
+<?php
+if(logged_in()==false){
+  header('Location: index.php');
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html>

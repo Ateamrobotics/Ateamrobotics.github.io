@@ -1,8 +1,14 @@
 <?php include('include/database.php');
+include('functions/user.func.php');
+include('init.php');
 $meetings ="SELECT * FROM meeting_dates ORDER by date";
 $meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
 ?>
 <?php
+if(logged_in()==false){
+  header('Location: index.php');
+  exit;
+}
   if($_POST){
     $msg = 0;
     $id=($_POST['id']);
