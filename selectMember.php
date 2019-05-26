@@ -1,4 +1,7 @@
 <?php include('include/database.php');
+if(isset($_GET['choice'])){
+  $choice = $_GET['choice'];
+}
  $members ="SELECT * FROM members ORDER by firstName";
  $membersResults = $mysqli->query($members) or die($mysqli->error.__LINE__);
 ?>
@@ -29,7 +32,13 @@
 }
 </style>
 <p style="margin-top:18px;margin-left:15px;"id="timeClock"></p>
-<form method="post" action="viewLessons.php">
+<?php
+if($choice==1){
+  echo '<form method="post" action="viewLessons.php">';
+}else{
+  echo '<form method="post" action="editRecord.php">';
+}
+?>
   <?php 
     $output =  '<select class="form-control" name="uid" style="margin-bottom: 10px;">';
               if ($membersResults->num_rows > 0) {

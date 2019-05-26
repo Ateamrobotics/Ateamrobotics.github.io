@@ -23,18 +23,14 @@
 	<a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
   </nav>
   <h2>Meetings List</h2>
-  <style>
-  div {
-  margin: 10px;
-}
-</style>
-<p style="margin-top:18px;margin-left:15px;"id="timeClock"></p>
+<p style="margin-top:10px;"id="timeClock"></p>
 <?php
 if ($meetingsResults->num_rows > 0) {
+  echo '<div class="card-deck">';
   while($row = $meetingsResults->fetch_assoc()) {
-    $output = '<div class="card" style="width: 18rem;">';
+    $output = '<div class="card bg-light mb-3" style="width: 18rem;">';
+    $output .= '<h5 class="card-header">'.$row['title'].'</h5>';
     $output .= ' <div class="card-body">';
-    $output .= '<h5 class="card-title">'.$row['title'].'</h5>';
     $output .= ' <h6 class="card-subtitle mb-2 text-muted">'.$row['date'].'</h6>';
     $output .= ' <p class="card-text">'.$row['description'].'</p>';
     $output .= '<a href='.$row['link'].' class="card-link">Meeting Information</a>';
@@ -42,6 +38,7 @@ if ($meetingsResults->num_rows > 0) {
     $output .= '</div>';
     echo $output;
   }
+  echo '</div>';
 } else {
   echo "No results.";
 }

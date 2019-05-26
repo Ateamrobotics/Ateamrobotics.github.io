@@ -1,4 +1,10 @@
 <?php include('include/database.php');
+include('functions/user.func.php');
+include('init.php');
+if(logged_in()==false){
+  header('Location: index.php');
+  exit;
+}
  $meetings ="SELECT * FROM meeting_dates ORDER by date DESC";
  $meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
  $submit = false;

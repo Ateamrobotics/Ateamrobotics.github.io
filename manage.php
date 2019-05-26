@@ -79,7 +79,7 @@ $msg="";
 <a href="editMeeting.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Meeting</button></a>
 </li>
 <li>
-<a href="editMember.php"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Member</button></a>
+<a href="selectMember.php?choice=0"><button type="button" style="margin-left:20px;margin-top:20px;"class="btn btn-warning btn-lg">Edit Member</button></a>
 </li>
 </ul>
 </table>

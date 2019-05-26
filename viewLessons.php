@@ -27,7 +27,7 @@ if(isset($_POST['uid'])){
 <body onload="startTime()">
 <body>
 	<nav class="navbar navbar-dark fixed-top bg-light">
-    <a class="navbar-brand" href="selectMember.php" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
+    <a class="navbar-brand" href="selectMember.php?choice=1" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
 	<a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
   </nav>
   <h2>View Lessons Learned</h2>
@@ -39,13 +39,14 @@ if(isset($_POST['uid'])){
 <p style="margin-top:18px;margin-left:15px;"id="timeClock"></p>
 <?php
 if ($lessonsResults->num_rows > 0) {
+  echo '<div class="card-deck">';
   while($row = $lessonsResults->fetch_assoc()) {
       if($row['description']==""){
         
       }else{
-        $output = '<div class="card" style="width: 18rem;">';
+        $output = '<div class="card bg-light mb-3" style="width: 18rem;">';
+        $output .= '<h5 class="card-header">'.$row['date'].'</h5>';
         $output .= ' <div class="card-body">';
-        $output .= '<h5 class="card-title">'.$row['date'].'</h5>';
         $output .= ' <h6 class="card-subtitle mb-2 text-muted">'.$row['time'].'</h6>';
         $output .= ' <p class="card-text">'.$row['description'].'</p>';
         $output .= '</div>';
@@ -53,6 +54,7 @@ if ($lessonsResults->num_rows > 0) {
         echo $output;
       }
   }
+  echo '<div>';
 } else {
   echo "No results.";
 }
