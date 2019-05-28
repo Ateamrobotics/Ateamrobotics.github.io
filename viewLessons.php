@@ -30,7 +30,7 @@ if(isset($_POST['uid'])){
     <a class="navbar-brand" href="selectMember.php?choice=1" style="color:rgb(111, 21, 214); font-weight: bold;"><- Back</a>
 	<a class="navbar-brand" href="index.php" style="color:rgb(111, 21, 214); font-weight: bold;">Attendance</a>
   </nav>
-  <h2>View Lessons Learned</h2>
+  <h2>Member Notes</h2>
   <style>
   div {
   margin: 10px;

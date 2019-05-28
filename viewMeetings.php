@@ -1,6 +1,10 @@
 <?php include('include/database.php');
- $meetings ="SELECT * FROM meeting_dates ORDER by date DESC";
+    $finalDate = date("Y/m/d");
+ $meetings2 ="SELECT * FROM meeting_dates WHERE date >= '$finalDate' ORDER by date DESC";
+ $meetingsResults2 = $mysqli->query($meetings2) or die($mysqli->error.__LINE__);
+$meetings ="SELECT * FROM meeting_dates WHERE date >= '$finalDate' ORDER by date ASC";
  $meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
+date_default_timezone_set("America/Toronto");
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +37,12 @@ if ($meetingsResults->num_rows > 0) {
     $output .= ' <div class="card-body">';
     $output .= ' <h6 class="card-subtitle mb-2 text-muted">'.$row['date'].'</h6>';
     $output .= ' <p class="card-text">'.$row['description'].'</p>';
-    $output .= '<a href='.$row['link'].' class="card-link">Meeting Information</a>';
+if($row['link']==""){
+$output .= '<a class="card-link-disabled">Meeting Info NA</a>';
+}else{
+$output .= '<a class="card-link" href='.$row['link'].'>Meeting Information</a>';
+}
+    
     $output .= '</div>';
     $output .= '</div>';
     echo $output;
