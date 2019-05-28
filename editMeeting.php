@@ -5,7 +5,11 @@ if(logged_in()==false){
   header('Location: index.php');
   exit;
 }
- $meetings ="SELECT * FROM meeting_dates ORDER by date DESC";
+date_default_timezone_set("America/Toronto");
+    $finalDate = date("Y/m/d");
+ $meetings2 ="SELECT * FROM meeting_dates WHERE date >= '$finalDate' ORDER by date DESC";
+ $meetingsResults2 = $mysqli->query($meetings2) or die($mysqli->error.__LINE__);
+$meetings ="SELECT * FROM meeting_dates WHERE date >= '$finalDate' ORDER by date ASC";
  $meetingsResults = $mysqli->query($meetings) or die($mysqli->error.__LINE__);
  $submit = false;
  if($_POST){
